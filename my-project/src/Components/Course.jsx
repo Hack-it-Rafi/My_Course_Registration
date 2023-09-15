@@ -20,7 +20,7 @@ const Course = ({ course, handleSelectCourse }) => {
                         </div>                  
                 </div>
                 <div className='flex justify-center'>
-                    <button onClick={handleSelectCourse} className='bg-[#2F80ED] text-white text-center w-full py-2 mt-4 rounded-lg'>Select</button>
+                    <button onClick={()=>handleSelectCourse(title, price, credit)} className='bg-[#2F80ED] text-white text-center w-full py-2 mt-4 rounded-lg'>Select</button>
                 </div>
             </div>
         </div>

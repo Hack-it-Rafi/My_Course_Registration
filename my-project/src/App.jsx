@@ -1,15 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './Components/Header'
 import Courses from './Components/Courses'
 import Details from './Components/Details'
 
 function App() {
-  const [selectCourse, setSelectCourse] = useState(0);
+  let tot=0;
+  let remain=0;
+  const [selectCourses, setSelectCourses] = useState([]);
+  const [totalCredit, setTotalCredit] = useState(0);
+  const [remainingCredit, setRemainingCredit] = useState(20);
+  const handleSelectCourse = (title, price, credit) => {
+    if (totalCredit + credit <= 20) {
+      const newTotalCredit = totalCredit + credit;
+      setTotalCredit(newTotalCredit);
+      const newArr = [...selectCourses, title];
+      setSelectCourses(newArr);
+    }
+  };
 
-  const handleSelectCourse=()=>{
-    // console.log("Hello");
-  }
+  useEffect(() => {
+    const remaining = 20 - totalCredit;
+    if(remaining>=0){
+      setRemainingCredit(remaining);
+    }
+  }, [totalCredit]);
+  
 
   return (
     <>
@@ -21,8 +37,11 @@ function App() {
         >
 
         </Courses>
-        <Details>
-
+        <Details
+          totalCredit={totalCredit}
+          remainingCredit={remainingCredit}
+          selectCourses={selectCourses}
+        >
         </Details>
       </div>
     </div>

@@ -5,15 +5,25 @@ import Courses from './Components/Courses'
 import Details from './Components/Details'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectCourse, setSelectCourse] = useState(0);
+
+  const handleSelectCourse=()=>{
+    // console.log("Hello");
+  }
 
   return (
     <>
     <div className='max-w-screen-xl mx-auto'>
       <Header></Header>
-      <div className='flex items-center gap-3'>
-        <Courses className="grid grid-cols-3 gap-3"></Courses>
-        <Details></Details>
+      <div className='flex gap-3'>
+        <Courses
+          handleSelectCourse={handleSelectCourse}
+        >
+
+        </Courses>
+        <Details>
+
+        </Details>
       </div>
     </div>
       
